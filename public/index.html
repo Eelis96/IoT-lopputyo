@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Data Viewer</title>
+    <style>
+        body {
+            font-family: cursive;
+            text-align: center;
+            padding: 20px;
+            background-color: black;
+            color: white;
+        }
+        
+
+        .rainbow-text {
+            font-size: 3em;
+            font-weight: bold;
+            background: linear-gradient(90deg, 
+                red, orange, yellow, green, blue, indigo, violet);
+            background-size: 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbow-animation 0.5s infinite linear;
+        }
+
+        @keyframes rainbow-animation {
+            0% {
+                background-position: 0%;
+            }
+            100% {
+                background-position: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Lämpötila</h1>
+    <p>Tämän hetkinen data:</p>
+    <p  class="rainbow-text" id="data">Waiting for data...</p>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        // Update the data on receiving a new MQTT message
+        socket.on('mqttMessage', (data) => {
+            document.getElementById('data').textContent = data;
+        });
+    </script>
+</body>
+</html>
