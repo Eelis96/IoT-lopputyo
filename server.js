@@ -9,7 +9,7 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 // MQTT Configuration
-const MQTT_BROKER = 'mqtt://172.20.49.39'; // Replace with your broker
+const MQTT_BROKER = 'mqtt://IP'; // Replace with your broker
 const MQTT_TOPIC = 'esp32/temperature';
 
 let latestMessage = 'No data received yet'; // Store the latest MQTT message
