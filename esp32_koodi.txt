@@ -6,8 +6,8 @@
 #include <DHT.h>
 
 // Wifi settings
-const char* ssid = "MB210";
-const char* password = "studentXAMK";
+const char* ssid = "";
+const char* password = "";
 
 // MQTT Server IP address
 const char* mqtt_server = "172.20.49.39";
